@@ -1,0 +1,28 @@
+<table class="table table-striped" style="width:75% ; margin-left:10.5%;margin-top: 1%">
+  <tbody *ngFor="let item of data">
+  <tr>
+  <th scope="row">
+  <div class="col-sm-4">
+  <img
+  src="https://media.licdn.com/dms/image/C4E03AQFHw0PoP2LVtA/profile-displayphoto-shrink_200_200/0?e=1561593600&v=beta&t=k5QY-UlCeaVZK5TciDq1FBN2dRUYrS_lrfUl_MrgMqk"
+  alt="not found" style="width: 100px;height: 100px;">
+  </div>
+  </th>
+  <td>
+  <div class="col-sm-1">
+  {{item.fullName}}
+  </div>
+  </td>
+  <td>
+  <button class="btn btn-success" (click)="onClick(item.memberId,'accepted')">Accept</button>
+  </td>
+  <td>
+  <div class="col">
+  <button class="btn btn-danger" (click)="onClick(item.memberId,'declined')">Decline</button>
+  </div>
+  </td>
+  
+  </tr>
+  <br>
+  </tbody>
+  </table> 

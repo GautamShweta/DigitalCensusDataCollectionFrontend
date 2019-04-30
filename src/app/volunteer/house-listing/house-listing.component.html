@@ -1,0 +1,104 @@
+<div class="container">
+  <h1>House Listing </h1>
+  <form (ngSubmit)="onSubmit()" #f="ngForm" >
+      <div class="form-group">
+     
+          <input type="text" 
+          class="form-control" 
+          id="apartmentNumber" 
+          ngModel 
+          name="apartmentNumber" 
+          #apartmentNumber="ngModel"
+          placeholder="Enter Apartment Number"
+          required
+          >
+          <span class="help-block" 
+          *ngIf="!apartmentNumber.valid && apartmentNumber.touched">
+          <p *ngIf="apartmentNumber.errors.required">Email Is Required</p>
+  
+          </span>
+        </div>
+
+    <div class="form-group">
+     
+      <input type="text" 
+      class="form-control" 
+      id="streetName" 
+      ngModel 
+      name="streetName" 
+      #streetName="ngModel"
+      placeholder="Enter StreetName"
+      required
+      >
+      <span class="help-block" 
+      *ngIf="!streetName.valid && streetName.touched">
+      <p *ngIf="streetName.errors.required">StreetName is Required</p>
+      </span>
+    </div>
+  
+    <div class="form-group">
+     
+        <input type="text" 
+        class="form-control" 
+        id="state" 
+        ngModel 
+        name="state" 
+        #state="ngModel"
+        placeholder="Enter State"
+        required
+        >
+        <span class="help-block" 
+        *ngIf="!state.valid && state.touched">
+        <p *ngIf="state.errors.required">State is Required</p>
+        </span>
+      </div>
+
+    <div class="form-group">
+      <input type="text"
+       class="form-control" 
+       id="headName"
+       ngModel 
+       name="headName" 
+       required
+       #headName="ngModel"
+       placeholder="Enter HeadName">
+       <span class="help-block" 
+       *ngIf="!headName.valid && headName.touched">
+       <p *ngIf="headName.errors.required">HeadName is Required</p>
+       </span>
+    </div>
+
+    <div class="form-group">
+      <select class="form-control" ngModel name="ownerShipStatus"  #status="ngModel" required >
+        <option value="" disabled selected>Select OwnerShip Status</option>
+        <option *ngFor="let status of ownerShipStatus" value={{status}}>
+            {{status}}
+        </option>
+    </select>
+    </div>
+    <span class="help-block" 
+    *ngIf="!status.valid && status.touched">
+    <p *ngIf="status.errors.required">Owner Ship Status is Required</p>
+    </span>
+      
+      <div class="form-group">
+     
+          <input type="Number" 
+          class="form-control" 
+          id="numberOfRooms" 
+          ngModel 
+          name="numberOfRooms" 
+          #numberOfRooms="ngModel"
+          placeholder="Enter Number Of Rooms"
+          required
+          >
+          <span class="help-block" 
+          *ngIf="!numberOfRooms.valid && numberOfRooms.touched">
+          <p *ngIf="numberOfRooms.errors.required">Number Of Rooms is Required</p>
+          </span>
+        </div>
+
+        
+    <button class="btn btn-success" [disabled]="!f.valid" >Save</button>
+  </form>
+</div>

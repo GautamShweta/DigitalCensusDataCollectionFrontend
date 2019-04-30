@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>Login Form</h1>
+  <form (ngSubmit)="onSubmit()" #f="ngForm">
+    <div class="form-group">
+
+      <input type="text" class="form-control" id="email" ngModel name="email" email #email="ngModel"
+        placeholder="Enter Email" required>
+      <span class="help-block" *ngIf="!email.valid && email.touched">
+        <p *ngIf="email.errors.email"> Please Enter A valid Email</p>
+        <p *ngIf="email.errors.required"> Email Is Required</p>
+      </span>
+    </div>
+
+    <div class="form-group">
+      <input type="password" class="form-control" id="password" ngModel name="password" required #password="ngModel"
+        placeholder="Enter Password">
+      <span class="help-block" *ngIf="!password.valid && password.touched">
+        <p *ngIf="password.errors.required"></p>
+
+      </span>
+    </div>
+
+    <button class="btn btn-success">LogIn</button>
+  </form>
+  
+</div>

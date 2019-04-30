@@ -1,0 +1,149 @@
+<div class="container">
+  <h1>Population Register </h1>
+  <form (ngSubmit)="onSubmit()" #f="ngForm" >
+      <div class="form-group">
+     
+          <input type="text" 
+          class="form-control" 
+          id="fullName" 
+          ngModel 
+          name="fullName" 
+          #fullName="ngModel"
+          placeholder="Enter Full Name"
+          required
+          >
+          <span class="help-block" 
+          *ngIf="!fullName.valid && fullName.touched">
+          <p *ngIf="fullName.errors.required">FullName Is Required</p>
+  
+          </span>
+        </div>
+
+        <div class="form-group">
+            <select class="form-control" ngModel name="gender"  #status="ngModel" required >
+              <option value="" disabled selected>Select Gender</option>
+              <option *ngFor="let gen of gender" value={{gen}}>
+                  {{gen}}
+              </option>
+          </select>
+          </div>
+          <span class="help-block" 
+          *ngIf="!status.valid && status.touched">
+          <p *ngIf="status.errors.required">Gender is Required</p>
+          </span>
+
+          <div class="form-group">
+              <input type="date" 
+              class=" form-control " 
+              id="dob" 
+              ngModel 
+              name="birthDate" 
+              #birthDate="ngModel"
+              placeholder="Select BirthDate"
+              required
+              >
+              <span class="help-block" 
+              *ngIf="!birthDate.valid && birthDate.touched">
+              <p *ngIf="birthDate.errors.required">BirthDate is Required</p>
+              </span>
+            </div>
+
+    <div class="form-group">
+     
+      <input type="number" 
+      class="form-control" 
+      id="censusHouseNumber" 
+      ngModel 
+      name="censusHouseNumber" 
+      #censusHouseNumber="ngModel"
+      placeholder="Enter Census House Number"
+      required
+      appHouseNumberExist
+      >
+      <div *ngIf=censusHouseNumber.errors>
+      <span class="help-block" 
+      *ngIf="!censusHouseNumber.valid && censusHouseNumber.touched">
+      <p *ngIf="censusHouseNumber.errors.required">Census House Number is Required</p>
+      <p *ngIf="censusHouseNumber.errors.HouseNumberexist">Census House Number Do Not Exists</p>
+      </span>
+    </div>
+    </div>
+  
+
+    <div class="form-group">
+        <select class="form-control" ngModel name="maritalStatus" required #status="ngModel">
+            <option value="" disabled selected>Select Marital Status</option>
+          <option *ngFor="let status of maritalStatus" value={{status}}>
+              {{status}}
+          </option>
+      </select>
+      </div>
+      <span class="help-block" 
+      *ngIf="!status.valid && status.touched">
+      <p *ngIf="status.errors.required">Marital Status is Required</p>
+      </span>
+
+
+    <div class="form-group" *ngIf="f.value.maritalStatus==='MARRIED'|| f.value.maritalStatus==='DIVORCED'">
+     
+        <input type="number" 
+        class="form-control" 
+        id="ageAtMarriage" 
+        ngModel 
+        name="ageAtMarriage" 
+        #ageAtMarriage="ngModel"
+        placeholder="Enter Age At Marriage"
+        required
+        >
+        <span class="help-block" 
+        *ngIf="!ageAtMarriage.valid && ageAtMarriage.touched">
+        <p *ngIf="ageAtMarriage.errors.required">Age At Marriage is Required</p>
+        </span>
+      </div>
+
+
+   
+
+    <div class="form-group">
+      <select class="form-control" ngModel name="relToHead" required #status="ngModel">
+          <option value="" disabled selected>Select Relation To Head</option>
+        <option *ngFor="let status of relationShipStatus" value={{status}}>
+            {{status}}
+        </option>
+    </select>
+    </div>
+    <span class="help-block" 
+    *ngIf="!status.valid && status.touched">
+    <p *ngIf="status.errors.required">Relation Ship Status is Required</p>
+    </span>
+
+    <div class="form-group" >
+      <select class="form-control" ngModel name="occupation" required #status="ngModel">
+          <option value="" disabled selected>Select Occupation Status</option>
+        <option *ngFor="let status of occupationStatus" value={{status}}>
+            {{status}}
+        </option>
+    </select>
+    </div>
+    <span class="help-block" 
+    *ngIf="!status.valid && status.touched">
+    <p *ngIf="status.errors.required">Occupation Status is Required</p>
+    </span>
+
+    <div class="form-group" *ngIf="f.value.occupation==='EMPLOYED'">
+      <select class="form-control"ngModel name="natureOfOccupation" required #type="ngModel" >
+          <option value="" disabled selected>Select Occupation Type</option>
+        <option *ngFor="let status of occupationType" value={{status}}>
+            {{status}}
+        </option>
+    </select>
+    <span class="help-block" 
+    *ngIf="!type.valid && status.touched">
+    <p *ngIf="type.errors.required">Occupation Type is Required</p>
+    </span>
+    </div>
+   
+    <button class="btn btn-success" [disabled]="!f.valid">Save</button>
+  </form>
+  
+</div>

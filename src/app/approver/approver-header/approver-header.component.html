@@ -1,0 +1,19 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Census Collection</a>
+    </div>
+
+    <ul class="nav navbar-nav">
+
+      <li ><a routerLink="pending" routerLinkActive="active-link">Request Pending</a></li>
+      <li><a routerLink="declined" routerLinkActive="active-link">Request Declined</a></li>
+      <li><a routerLink="approved" routerLinkActive="active-link" >Request Approved</a></li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li><a routerLink="/" routerLinkActive="active-link" (click)="onClick()"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
+    </ul>
+
+  </div>
+</nav>
