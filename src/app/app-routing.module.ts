@@ -14,14 +14,18 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ApproverGuardServiceService } from './services/approver-guard-service.service';
 import { VolunteerGuardServiceService } from './services/volunteer-guard-service.service';
+import { StatereportComponent } from './statereport/statereport.component';
 
 
 const routes: Routes = [
+
   {
     path: '',
     component: HomeComponent,
     children: [
-      { path: '', component: LoginComponent },
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      { path: 'login', component: LoginComponent },
+      {path: 'statereport', component: StatereportComponent},
       { path: 'signin', component: SigninComponent },
     ]
   },
@@ -33,7 +37,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'pending', pathMatch: 'full'},
       { path: 'pending', component: PendingVolunteerComponent },
       { path: 'declined', component: DeclinedVolunteerComponent },
-      {path: 'approved', component: ApprovedVolunteerComponent}
+      {path: 'approved', component: ApprovedVolunteerComponent},
     ]
   },
   {

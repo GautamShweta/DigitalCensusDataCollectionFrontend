@@ -11,7 +11,7 @@ export class DeclinedVolunteerComponent {
   constructor(private memberService: MemberService) {
     this.memberService.getByStatus('declined').subscribe((d: any) => {
       this.data = d.data;
-    });
+    }, (error) => (alert('there was some error')));
   }
 
 }

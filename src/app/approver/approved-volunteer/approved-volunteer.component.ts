@@ -8,9 +8,12 @@ import { MemberService } from 'src/app/services/member.service';
 })
 export class ApprovedVolunteerComponent {
   data: any;
+  display: false;
   constructor(private memberService: MemberService) {
     this.memberService.getByStatus('accepted').subscribe((d: any) => {
       this.data = d.data;
+    }, (error) => {
+      alert('there was some error');
     });
   }
 

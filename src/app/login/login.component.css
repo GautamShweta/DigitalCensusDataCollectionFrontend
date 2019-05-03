@@ -1,0 +1,41 @@
+
+  div.polaroid {
+   border-radius: 25px;
+   width: 40%;
+   background-color: rgb(230, 230, 230);
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   margin-bottom:25px;
+   margin-top: 80px;
+   text-align: center;
+   padding: 10px 20px;
+  
+ }
+ .text{
+    margin-bottom: 20px;
+ }
+
+ h1
+ {
+    color: rgb(128, 0, 0);
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold
+    
+ }
+ input {
+   border: 0;
+   outline: 0;
+   border-bottom: 1px solid rgb(128, 0, 0); ;
+ }
+.errortext
+{
+   color: red;
+   text-align: left;
+}
+
+.button
+{
+  border-radius: 25px;
+  width:150px;
+  height:40px;
+  background-color: rgb(0, 102, 255);
+}

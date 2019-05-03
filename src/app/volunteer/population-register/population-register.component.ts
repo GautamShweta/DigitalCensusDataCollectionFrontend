@@ -13,6 +13,7 @@ export class PopulationRegisterComponent {
   occupationStatus: Array<string> = ['EMPLOYED', 'STUDENT', 'UNEMPLOYED'];
   occupationType: Array<string> = ['GOVT_SECTOR', 'PRIVATE_SECTOR', 'SELF_EMPLOYED'];
   gender: Array<string> = ['MALE', 'FEMALE', 'OTHERS'];
+  checkDate = false;
   @ViewChild('f') houseListingForm: NgForm;
   constructor(private populationRegisterService: PopulationregisterService) {
   }
@@ -21,10 +22,22 @@ export class PopulationRegisterComponent {
     this.populationRegisterService.postData(this.houseListingForm.value).subscribe((d: any) => {
       if (d.success === true) {
         alert('Added Successfully');
+        this.houseListingForm.resetForm();
+      } else {
+        alert(d.message);
+      }
+    },
+    (error) => {alert('There Was some network issue' ); });
+  }
+
+  ValidateDateOfBirth(date) {
+    let enteredDate = new Date(date);
+    let today = new Date();
+    if (enteredDate.getTime() > today.getTime()) {
+      this.checkDate = true;
     } else {
-      alert(d.message);
+      this.checkDate = false;
     }
-    });
   }
 
 }

@@ -27,16 +27,16 @@ export class LoginComponent {
             window.sessionStorage.setItem('role', 'volunteer');
             if (d.data.status === 'ACCEPTED') {
               alert('You are Logged In');
-              this.route.navigate(['volunteer'], { relativeTo: this.router });
+              this.route.navigate(['/volunteer'], { relativeTo: this.router });
             } else if (d.data.status === 'DECLINED') {
-              this.route.navigate(['requestDeclined'], { relativeTo: this.router });
+              this.route.navigate(['/requestDeclined'], { relativeTo: this.router });
             } else {
-              this.route.navigate(['requestPending'], { relativeTo: this.router });
+              this.route.navigate(['/requestPending'], { relativeTo: this.router });
             }
           } else {
             alert('You are Logged In As Approver');
             window.sessionStorage.setItem('role', 'approver');
-            this.route.navigate(['approver'], { relativeTo: this.router });
+            this.route.navigate(['/approver'], { relativeTo: this.router });
           }
         } else {
           alert('Wrong password');
@@ -44,6 +44,10 @@ export class LoginComponent {
       } else {
         alert('You Are Not Registered User .Create New Account');
       }
+    },
+    // tslint:disable-next-line:no-shadowed-variable
+    (error) => {
+      alert('there was some network issue');
     } );
 
 

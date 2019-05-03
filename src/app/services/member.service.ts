@@ -21,9 +21,12 @@ export class MemberService {
     return this.http.get(`http://localhost:63816/api/memberRequest?status=${status}`);
   }
 
-  addMember(user: UserModel) {
-    return this.http.post(`http://localhost:63816/api/memberRequest`, user);
+  addMember(member: UserModel, image: string, name: string) {
+    return this.http.post(`http://localhost:63816/api/memberRequest`, {member, image, name});
   }
+  // addMember(user: UserModel) {
+  //   return this.http.post(`http://localhost:63816/api/memberRequest`, user);
+  // }
 
   updateStatus(memberId: number, status: string) {
     return this.http.patch(`http://localhost:63816/api/memberRequest`, { memberId , status});

@@ -1,11 +1,15 @@
-<div class="container">
+
+
+  <div class="polaroid container" >
+    <div class="text">
   <h1>Login Form</h1>
+</div>
   <form (ngSubmit)="onSubmit()" #f="ngForm">
     <div class="form-group">
 
       <input type="text" class="form-control" id="email" ngModel name="email" email #email="ngModel"
         placeholder="Enter Email" required>
-      <span class="help-block" *ngIf="!email.valid && email.touched">
+      <span class="help-block errortext" *ngIf="!email.valid && email.touched">
         <p *ngIf="email.errors.email"> Please Enter A valid Email</p>
         <p *ngIf="email.errors.required"> Email Is Required</p>
       </span>
@@ -14,13 +18,14 @@
     <div class="form-group">
       <input type="password" class="form-control" id="password" ngModel name="password" required #password="ngModel"
         placeholder="Enter Password">
-      <span class="help-block" *ngIf="!password.valid && password.touched">
+      <span class="help-block errortext" *ngIf="!password.valid && password.touched">
         <p *ngIf="password.errors.required"></p>
 
       </span>
     </div>
 
-    <button class="btn btn-success">LogIn</button>
+    <button [disabled]="!f.valid" class="btn  button">LogIn</button>
   </form>
-  
+
 </div>
+

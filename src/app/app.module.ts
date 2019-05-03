@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -30,6 +30,12 @@ import { HomeheaderComponent } from './home/homeheader/homeheader.component';
 import { HouseNumberExistDirective } from './customdirectives/house-number-exist.directive';
 import {VolunteerGuardServiceService} from './services/volunteer-guard-service.service';
 import {ApproverGuardServiceService} from './services/approver-guard-service.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { StatereportComponent } from './statereport/statereport.component';
+import { ChartsModule } from 'ng2-charts';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,12 +58,16 @@ import {ApproverGuardServiceService} from './services/approver-guard-service.ser
     HomeComponent,
     HomeheaderComponent,
     HouseNumberExistDirective,
+    StatereportComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ChartsModule,
+    NgxPaginationModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [ HouselistingService, PopulationregisterService, MemberService, ApproverGuardServiceService, VolunteerGuardServiceService],
   bootstrap: [AppComponent]

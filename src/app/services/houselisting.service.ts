@@ -8,4 +8,17 @@ export class HouselistingService {
     return this.http.post(`http://localhost:63816/api/house`, house);
   }
 
+
+  GetPopulationReport()
+  {
+    let url='http://localhost:63816/api/house?state=all';
+    return this.http.get(url);
+  }
+
+  // GetPopulationReport()
+  // {
+  //   let url='http://localhost:63816/api/house/StateReport';
+  //   return this.http.get(url);
+  // }
+
 }

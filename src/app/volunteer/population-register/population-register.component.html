@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container polaroid">
   <h1>Population Register </h1>
   <form (ngSubmit)="onSubmit()" #f="ngForm" >
       <div class="form-group">
@@ -12,7 +12,7 @@
           placeholder="Enter Full Name"
           required
           >
-          <span class="help-block" 
+          <span class="help-block errortext" 
           *ngIf="!fullName.valid && fullName.touched">
           <p *ngIf="fullName.errors.required">FullName Is Required</p>
   
@@ -27,7 +27,7 @@
               </option>
           </select>
           </div>
-          <span class="help-block" 
+          <span class="help-block errortext" 
           *ngIf="!status.valid && status.touched">
           <p *ngIf="status.errors.required">Gender is Required</p>
           </span>
@@ -36,14 +36,19 @@
               <input type="date" 
               class=" form-control " 
               id="dob" 
+              (change)="ValidateDateOfBirth(birthDate.value)"
               ngModel 
               name="birthDate" 
               #birthDate="ngModel"
               placeholder="Select BirthDate"
               required
               >
+              <span class="help-block errortext">
+                <p *ngIf="checkDate" >Date Of Birth Should Not Be Greater Than Today!</p>
+              </span>
               <span class="help-block" 
-              *ngIf="!birthDate.valid && birthDate.touched">
+              *ngIf="!birthDate.valid && birthDate.touched ">
+             
               <p *ngIf="birthDate.errors.required">BirthDate is Required</p>
               </span>
             </div>
@@ -61,7 +66,7 @@
       appHouseNumberExist
       >
       <div *ngIf=censusHouseNumber.errors>
-      <span class="help-block" 
+      <span class="help-block errortext" 
       *ngIf="!censusHouseNumber.valid && censusHouseNumber.touched">
       <p *ngIf="censusHouseNumber.errors.required">Census House Number is Required</p>
       <p *ngIf="censusHouseNumber.errors.HouseNumberexist">Census House Number Do Not Exists</p>
@@ -78,7 +83,7 @@
           </option>
       </select>
       </div>
-      <span class="help-block" 
+      <span class="help-block errortext" 
       *ngIf="!status.valid && status.touched">
       <p *ngIf="status.errors.required">Marital Status is Required</p>
       </span>
@@ -95,7 +100,7 @@
         placeholder="Enter Age At Marriage"
         required
         >
-        <span class="help-block" 
+        <span class="help-block errortext" 
         *ngIf="!ageAtMarriage.valid && ageAtMarriage.touched">
         <p *ngIf="ageAtMarriage.errors.required">Age At Marriage is Required</p>
         </span>
@@ -112,7 +117,7 @@
         </option>
     </select>
     </div>
-    <span class="help-block" 
+    <span class="help-block errortext" 
     *ngIf="!status.valid && status.touched">
     <p *ngIf="status.errors.required">Relation Ship Status is Required</p>
     </span>
@@ -125,7 +130,7 @@
         </option>
     </select>
     </div>
-    <span class="help-block" 
+    <span class="help-block errortext" 
     *ngIf="!status.valid && status.touched">
     <p *ngIf="status.errors.required">Occupation Status is Required</p>
     </span>
@@ -137,13 +142,13 @@
             {{status}}
         </option>
     </select>
-    <span class="help-block" 
+    <span class="help-block errortext" 
     *ngIf="!type.valid && status.touched">
     <p *ngIf="type.errors.required">Occupation Type is Required</p>
     </span>
     </div>
    
-    <button class="btn btn-success" [disabled]="!f.valid">Save</button>
+    <button class="btn btn-success button" [disabled]="!f.valid">Save</button>
   </form>
   
 </div>

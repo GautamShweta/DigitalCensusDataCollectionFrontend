@@ -1,127 +1,83 @@
-<div class="container">
+<div class="container polaroid">
+  <div class="text">
   <h1>SignIn Form</h1>
-  <form (ngSubmit)="onSubmit()" #f="ngForm" >
-      <div class="form-group">
+</div>
+  <form (ngSubmit)="onSubmit()" #f="ngForm">
+
      
-          <input type="text" 
-          class="form-control" 
-          id="email" 
-          ngModel 
-          name="email" 
-          email
-          #email="ngModel"
-          placeholder="Enter Email"
-          required
-          email
-          appEmailexist
-          >
-          <div *ngIf="email.errors">
-          <span class="help-block" 
-          *ngIf="!email.valid && email.touched">
+      
+  
+     
+   
+    <div class="form-group">
+
+      <input type="text" class="form-control" id="email" ngModel name="email" email #email="ngModel"
+        placeholder="Enter Email" required email appEmailexist>
+      <div *ngIf="email.errors">
+        <span class="help-block errortext" *ngIf="!email.valid && email.touched">
           <p *ngIf="email.errors.required">Email Is Required</p>
           <p *ngIf="email.errors.email">Invalid Email</p>
           <p *ngIf="email.errors.Emailexist">Email already exists </p>
 
-          </span>
-        </div>
-        </div>
+        </span>
+      </div>
+    </div>
 
     <div class="form-group">
-     
-      <input type="text" 
-      class="form-control" 
-      id="firstName" 
-      ngModel 
-      name="firstName" 
-      #firstName="ngModel"
-      placeholder="Enter firstName"
-      [pattern]="firstnamelastnamepattern"
-      required
-      >
-      <span class="help-block" 
-      *ngIf="!firstName.valid && firstName.touched">
-      <p *ngIf="firstName.errors.required">FirstName is Required</p>
-      <p *ngIf="firstName.errors.pattern">Invalid</p>
+
+      <input type="text" class="form-control" id="firstName" ngModel name="firstName" #firstName="ngModel"
+        placeholder="Enter First Name" [pattern]="firstnamelastnamepattern" required>
+      <span class="help-block errortext" *ngIf="!firstName.valid && firstName.touched">
+        <p *ngIf="firstName.errors.required">FirstName is Required</p>
+        <p *ngIf="firstName.errors.pattern">Invalid</p>
       </span>
     </div>
-  
-    <div class="form-group">
-     
-        <input type="text" 
-        class="form-control" 
-        id="lastName" 
-        ngModel 
-        name="lastName" 
-        #lastName="ngModel"
-        placeholder="Enter LastName"
-        [pattern]="firstnamelastnamepattern"
-        required
-        >
-        <span class="help-block" 
-        *ngIf="!lastName.valid && lastName.touched">
-        <p *ngIf="lastName.errors.required">LastName is Required</p>
-        <p *ngIf="lastName.errors.pattern">Invalid</p>
-        </span>
-      </div>
-    <div class="form-group">
-      <input type="password"
-       class="form-control" 
-       id="password"
-       ngModel 
-       name="password" 
-       required
-       #password="ngModel"
-       [pattern]="pwdPattern"
-       placeholder="Enter Password">
-       <span class="help-block" 
-       *ngIf="!password.valid && password.touched">
-       <p *ngIf="password.errors.required">Password is Required</p>
-       <p *ngIf="password.errors.pattern">Password must contain 8 characters with atleast
-         1 special character and 1 uppercase character
-       </p>
-       </span>
-    </div>
 
     <div class="form-group">
-     
-        <input type="text" 
-        class="form-control" 
-        id="image" 
-        ngModel 
-        name="image" 
-        #image="ngModel"
-        placeholder="Image URL"
-        required
-        >
-        <span class="help-block" 
-        *ngIf="!image.valid && image.touched">
-        <p *ngIf="image.errors.required">ImageUrl is Required</p>
-        </span>
-      </div>
-      <div class="form-group">
-     
-          <input type="text" 
-          class="form-control" 
-          id="aadharNumber" 
-          ngModel 
-          name="aadharNumber" 
-          #aadharNumber="ngModel"
-          placeholder="Enter Your Aadhar Number"
-          required
-         [pattern]="aadharPattern"
-          appAadharexist
-          >
-          <div *ngIf="aadharNumber.errors">
-          <span class="help-block" 
-          *ngIf="!aadharNumber.valid && aadharNumber.touched">
+
+      <input type="text" class="form-control" id="lastName" ngModel name="lastName" #lastName="ngModel"
+        placeholder="Enter Last Name" [pattern]="firstnamelastnamepattern" required>
+      <span class="help-block errortext" *ngIf="!lastName.valid && lastName.touched">
+        <p *ngIf="lastName.errors.required">LastName is Required</p>
+        <p *ngIf="lastName.errors.pattern">Invalid</p>
+      </span>
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" id="password" ngModel name="password" required #password="ngModel"
+        [pattern]="pwdPattern" placeholder="Enter Password">
+      <span class="help-block errortext" *ngIf="!password.valid && password.touched">
+        <p *ngIf="password.errors.required">Password is Required</p>
+        <p *ngIf="password.errors.pattern">Password must contain 8 characters with atleast
+          1 special character and 1 uppercase character
+        </p>
+      </span>
+    </div>
+
+
+    <div class="form-group">
+
+      <input type="text" class="form-control" id="aadharNumber" ngModel name="aadharNumber" #aadharNumber="ngModel"
+        placeholder="Enter Your Aadhar Number" required [pattern]="aadharPattern" appAadharexist>
+      <div *ngIf="aadharNumber.errors">
+        <span class="help-block errortext" *ngIf="!aadharNumber.valid && aadharNumber.touched">
           <p *ngIf="aadharNumber.errors.required">AadharNumber is Required</p>
           <p *ngIf="aadharNumber.errors.pattern">Invalid</p>
           <p *ngIf="aadharNumber.errors.AadharNumberexist">AadharNumber already Exists</p>
-          </span>
+        </span>
+      </div>
+    </div>
+    <div class="form-group imageselector" >
+        <div  class="form-control" style="width:300px;height:40px;display: inline">
+          <input   type="file" accept="image/jpeg" #image (change)="onImageUpload($event)" 
+            style="display:inline; padding-right: 30px;">
         </div>
+        <div  style="display: inline">
+          <img *ngIf="!display" src={{imageUrl}} style="width:100px;height:100px">
+          <img *ngIf="display" src={{base64textString}} style="width:100px;height:100px;display: inline">
         </div>
-    <!-- <button type="submit" class="btn btn-success" >Sign Up</button> -->
+      </div>
+    
 
-    <button type="submit" [disabled]="!f.valid" class="btn btn-success" >Sign Up</button>
+    <button type="submit" [disabled]="!f.valid" class="btn  button">Sign Up</button>
   </form>
 </div>

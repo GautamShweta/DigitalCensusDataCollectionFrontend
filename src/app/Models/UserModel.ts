@@ -4,5 +4,4 @@ export interface UserModel {
     aadharNumber: string;
     firstName: string;
     lastName: string;
-    image: string;
 }

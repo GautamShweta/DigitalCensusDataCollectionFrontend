@@ -9,6 +9,10 @@ import { HouselistingService } from 'src/app/services/houselisting.service';
 })
 export class HouseListingComponent {
 
+   States = new Array("Andaman & Nicobar", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh", "Chhattisgarh", "Dadra & Nagar Haveli", "Daman & Diu", "Delhi", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu & Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Orissa", "Pondicherry", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Tripura", "Uttar Pradesh", "Uttaranchal", "West Bengal");
+
+  statevalue="Haryana";
+
   ownerShipStatus: Array<string> = ['OWNER', 'RENTED'];
   @ViewChild('f') houseListingForm: NgForm;
   constructor(private houseListingService: HouselistingService) {
@@ -17,10 +21,12 @@ export class HouseListingComponent {
   onSubmit() {
     this.houseListingService.postData(this.houseListingForm.value).subscribe((d: any) => {
       if (d.success === true) {
-          alert('Added Successfully');
+        console.log(d.data);
+        alert('Added Successfully.Census House Number is ' + d.data.houseId);
+        this.houseListingForm.resetForm();
       } else {
         alert(d.message);
       }
-    });
+    }, (error) => { alert('There was some network issue'); });
   }
 }
